@@ -1,0 +1,14 @@
+<script>
+    function onEmailClicked() {
+        document.querySelector(".emailCopiedHidden").classList.add("emailCopiedShown");
+        navigator.clipboard.writeText("thomaslcave@gmail.com");
+    }
+</script>
+<div class="container">
+        <ul class="navBar">
+            <li class="navBarItemLeft"><a title="Home" href="./"><b>playdastan.online</b></a></li>
+            <li class="navBarItemRight" style="line-height: 0;"><a title="View the code on GitHub" href="https://github.com/SpookyScaryDev/Dastan"><ion-icon name="logo-github"></ion-icon></a></li>
+            <li class="navBarItemRight" style="line-height: 0;"><a title="Send me feedback" style="cursor: pointer;" onclick="onEmailClicked()"><ion-icon name="mail"></ion-icon></a></li>
+            <li class="navBarItemRight"><a class="emailCopiedHidden" style="color: #595959;">Copied!</a></li>
+        </ul>
+</div>

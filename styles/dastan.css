@@ -1,0 +1,143 @@
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7em;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.board {
+    width: 50%;
+    position: relative;
+    aspect-ratio: 1/1;
+    flex-grow: 1;
+}
+
+.info {
+    flex-grow: 100;
+    text-align: left;
+}
+
+.message {
+    padding-bottom: 0.7em;
+    text-align: left;
+    line-height: 1.1em;
+}
+
+.playerInfo {
+    background-color: #333;
+    padding: 0.6em;
+    border-radius: 7px;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    outline-width: 2px;
+    outline-color: rgba(187, 187, 187, 0.7);
+}
+
+.moveQueue {
+    display: flex;
+    gap: 0.8em;
+    padding-top: 0.8em;
+}
+
+.moveType {
+    font-size: 0.7em;
+
+    display: inline-block;
+    width: calc(100% / 5);
+    text-align: center;
+    border-radius: 7px;
+    border-style: solid;
+    cursor: pointer;
+    user-select: none;
+
+    --move-colour-ryott: #779556;
+    --move-colour-chowkidar: #5A7AED;
+    --move-colour-faujdar: #ED562B;
+    --move-colour-jazair: #D6AA31;
+    --move-colour-cuirassier: #D742ED;
+}
+
+@media only screen and (min-width: 800px)  {
+.moveType {
+    font-size: 1em;
+}
+}
+
+.playerScoreWhite {
+    color: #1e1d1d;
+    background-color: white;
+    font-weight: bold;
+    padding: 0em;
+    width: 70px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.playerScoreBlack {
+    color: #fff;
+    background-color: #1e1e1e;
+    font-weight: bold;
+    padding: 0.1em;
+    width: 70px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tile {
+    position: relative;
+    float: left;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    width: calc(100% / 6);
+    height: calc(100% / 6);
+}
+
+.kotle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-style: double;
+    border-width: 9px;
+    border-color: #779556;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.tile canvas {
+    pointer-events: none;
+}
+
+.piece {
+    position: absolute;
+    z-index: 500;
+    cursor: grab;
+}
+
+.piece img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    border-width: 0px;
+    border-style: solid;
+    border-color: rgba(187, 187, 187, 0.7);
+    box-sizing: border-box;
+    pointer-events: none;
+}
