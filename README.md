@@ -1,6 +1,6 @@
 # Dastan
 
-<div align=center><img src="https://github.com/SpookyScaryDev/Dastan/blob/main/images/dastan.jpg?raw=true" width=400></div>
+<div align=center><img src="https://github.com/SpookyScaryDev/Dastan/blob/main/images/dastan.png?raw=true" width=400></div>
 
 ***
 
