@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+
+        title Dastan - #{title}
+
+        // Fonts
+        link(rel="preconnect" href="https://rsms.me/")
+        link(rel="stylesheet" href="https://rsms.me/inter/inter.css")
+
+        // Tab Icon
+        link(rel="icon" type="image/jpg" href="images/icon.jpg")
+
+        // Styles
+        link(rel="stylesheet" href="styles/dastan.css")
+        link(rel="stylesheet" href="styles/style.css")
+
+        script.
+            function onEmailClicked() {
+                document.querySelector(".emailCopiedHidden").classList.add("emailCopiedShown");
+                navigator.clipboard.writeText("thomaslcave@gmail.com");
+            }
+
+        block scripts
+
+    body
+        .container
+            ul(class="navBar")
+                li(class="navBarItemLeft") 
+                    a(title="Home" href="./") 
+                        b
+                            p playdastan.online
+                li(class="navBarItemRight" style="line-height: 0;")
+                    a(title="View the code on GitHub" href="https://github.com/SpookyScaryDev/Dastan")
+                        img(src="images/logo-github.svg")
+                li(class="navBarItemRight" style="line-height: 0;")
+                    a(title="Send me feedback" style="cursor: pointer;" onclick="onEmailClicked()")
+                        img(src="images/mail.svg")
+                li(class="navBarItemRight")
+                    a(class="emailCopiedHidden" style="color: #595959;")
+                         p Copied!
+
+        .container
+            block content
+

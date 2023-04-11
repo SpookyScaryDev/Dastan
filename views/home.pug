@@ -1,0 +1,21 @@
+extends layout.pug
+
+block scripts
+    script(src="/socket.io/socket.io.js")
+    script(defer, src="scripts/requestGame.js")
+
+block content
+    p#title Welcome to playdastan.online
+    p#subtitle The world's <s>only</s> best online dastan site.
+
+    img(src="images/dastan.png" id="dastanImage")
+
+    #buttons
+        a(title="Join an random game" onclick="randomGame()")
+            p Random Game
+        a(title="Create a private game and invite your opponent" onclick="customGame()")
+            p Create Game
+        a(title="Play a game over the board" href="./otb")
+            p Over The Board
+     
+    p#footer Made by Tom Cave, with lots of help from Rubens.

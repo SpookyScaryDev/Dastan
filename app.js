@@ -12,19 +12,21 @@ const options = {
 };
      
 const server = https.createServer(options, app);
-
+ 
+app.set('view engine', 'pug')
+ 
 app.use(express.static(__dirname + "/"));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/home.html');
+  res.render('home', { title: 'Home' });
 });
 
 app.get('/game', (req, res) => {
-    res.sendFile(__dirname + '/game.html');
+  res.render('game', { title: 'Game' });
 });
 
 app.get('/otb', (req, res) => {
-    res.sendFile(__dirname + '/otb.html');
+  res.render('otb', { title: 'Over The Board' });
 });
 
 require('./scripts/socket.js')(server);

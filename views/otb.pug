@@ -1,0 +1,9 @@
+extends layout.pug
+
+block scripts
+    script(src="/socket.io/socket.io.js")
+    script(defer, src="scripts/dastan.js")
+    script(defer, src="scripts/otb.js")
+
+block content
+    dastan-board
