@@ -518,7 +518,7 @@ class DastanBoard extends HTMLElement {
         }
         else if (this.otb || (this.turn == this.player)) {
             if (this.currentMove == -1) {
-                this.message.innerHTML += "Pick a move style or take an offer.";
+                this.message.innerHTML += "Pick a move style or accept the offer.";
             }
             else {
                 this.message.innerHTML += "Make a move or pick a new move style.";
