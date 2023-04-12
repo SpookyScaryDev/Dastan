@@ -1,3 +1,5 @@
+const logger = require("./logger.js");
+
 module.exports = function(server) {
     const socket = require('socket.io');
 
@@ -11,19 +13,21 @@ module.exports = function(server) {
         games[i] = { players: 0, pid: [0, 0], custom: true };
     }
 
+    logger.info("=".repeat(40) + " Running " + "=".repeat(40));
+
     io.on('connection', function (socket) {
         // Client connects
         let playerId = socket.id;
-        console.log(playerId + ' connected');
+        logger.info(playerId + ' connected');
 
         socket.on('joined', function (roomId) {
-            console.log(playerId + " tried to join room " + roomId);
+            logger.info(playerId + " tried to join room " + roomId);
             if (roomId < 0 || roomId >= games.length) {
-                console.log(playerId + " was sent home.");
+                logger.info(playerId + " was sent home.");
                 socket.emit('home', roomId);
             }
             else if (games[roomId].players < 2) {
-                console.log(playerId + " joined room " + roomId);
+                logger.info(playerId + " joined room " + roomId);
                 games[roomId].players++;
                 games[roomId].pid[games[roomId].players - 1] = playerId;
 
@@ -39,11 +43,11 @@ module.exports = function(server) {
                         player0: games[roomId].pid[0],
                         seed: Date.now()
                     });
-                    console.log("Game started on board " + roomId + " between " + games[roomId].pid[0] + " and " + games[roomId].pid[0]);
+                    logger.info("Game started on board " + roomId + " between " + games[roomId].pid[0] + " and " + games[roomId].pid[0]);
                 }
             }
             else {
-                console.log(playerId + " was sent home.");
+                logger.info(playerId + " was sent home.");
                 socket.emit('home', roomId);
                 return;
             }
@@ -51,7 +55,7 @@ module.exports = function(server) {
         });
 
         socket.on('disconnect', function () {
-            console.log(playerId + ' disconnected');
+            logger.info(playerId + ' disconnected');
             for (let i = 0; i < games.length; i++) {
                 if (games[i].pid[0] == playerId || games[i].pid[1] == playerId) {
                     games[i].players--;
@@ -68,7 +72,7 @@ module.exports = function(server) {
                     games[i].players = 0;
                     games[i].pid[0] = null;
                     games[i].pid[1] = null;
-                    console.log("Game over on board " + i + " between " + games[i].pid[0] + " and " + games[i].pid[0]);
+                    logger.info("Game over on board " + i + " between " + games[i].pid[0] + " and " + games[i].pid[0]);
                 }
             }
         });
@@ -79,12 +83,12 @@ module.exports = function(server) {
              
             switch (type) {
                 case 0: {
-                    console.log(playerId + " requested a random game");
+                    logger.info(playerId + " requested a random game");
                     break;
                 }
                 // Custom game
                 case 1: { 
-                    console.log(playerId + " requested a custom game");
+                    logger.info(playerId + " requested a custom game");
                     break;
                 }
             }
