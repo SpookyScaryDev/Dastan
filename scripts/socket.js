@@ -22,6 +22,13 @@ module.exports = function(server) {
 
         socket.on('joined', function (roomId) {
             logger.info(playerId + " tried to join room " + roomId);
+            roomId = parseInt(roomId);
+            if (isNaN(roomId)) {
+                logger.info("Invalid room id.");
+                logger.info(playerId + " was sent home.");
+                socket.emit('home', roomId);
+                return;
+            }
             if (roomId < 0 || roomId >= games.length) {
                 logger.info(playerId + " was sent home.");
                 socket.emit('home', roomId);
