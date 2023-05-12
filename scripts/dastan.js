@@ -571,28 +571,17 @@ class DastanBoard extends HTMLElement {
     }
 
     scoreKotlas() {
-        const pieceInKotla0 = this.getPieceAt(2, 0);
-        if (pieceInKotla0) {
-            if (pieceInKotla0.player == this.turn) {
-                if (pieceInKotla0.player == 0) {
+        let piecesInKotlas = [this.getPieceAt(2, 0), this.getPieceAt(3, 5)];
+        for (let player = 0; player < 2; player++) {
+            let pieceInKotla = piecesInKotlas[player];
+            if (pieceInKotla == null) continue;
+            if (pieceInKotla.player == this.turn) {
+                if (pieceInKotla.player == player) {
                     this.scores[this.turn] += 5;
                 }
                 else {
                     this.scores[this.turn] += 1;
-                    this.end();
-                }
-            }
-        }
-
-        const pieceInKotla1 = this.getPieceAt(3, 5);
-        if (pieceInKotla1) {
-            if (pieceInKotla1.player == this.turn) {
-                if (pieceInKotla1.player == 1) {
-                    this.scores[this.turn] += 5;
-                }
-                else {
-                    this.scores[this.turn] += 1;
-                    this.end();
+                    if (pieceInKotla.piece == "mirza") this.end();
                 }
             }
         }
